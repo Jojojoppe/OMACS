@@ -1,0 +1,122 @@
+/* ---------------------------------------------------
+	SIDEBAR STYLE
+----------------------------------------------------- */
+#sidebar {
+	width: 250px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100vh;
+	z-index: 999;
+	background: var(--base-dark);
+	color: var(--text-light);;
+	transition: all 0.3s;
+}
+
+#dismiss {
+	width: 35px;
+	height: 35px;
+	line-height: 35px;
+	text-align: center;
+	background: var(--base-mid);
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	cursor: pointer;
+	-webkit-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
+}
+#dismiss:hover {
+	background: var(--text-light);
+	color: var(--base-dark);
+}
+
+.overlay {
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	background: rgba(0, 0, 0, 0.7);
+	z-index: 998;
+	display: none;
+}
+
+#sidebar.active {
+	margin-left: -250px;
+}
+
+#sidebar .sidebar-header {
+	padding: 20px;
+	background: var(--base-dark);
+}
+
+#sidebar ul.components {
+	padding: 20px 0;
+}
+
+#sidebar ul p {
+	color: var(--text-light);;
+	padding: 10px;
+	font-weight: 500;
+	border-bottom: 1px solid var(--base-light);
+}
+
+#sidebar ul li a {
+	padding: 10px;
+	font-size: 1.1em;
+	display: block;
+}
+#sidebar ul li a:hover {
+	color: var(--base-dark);
+	background: #fff;
+}
+
+#sidebar ul li.active > a, a[aria-expanded="true"] {
+	color: var(--text-light);;
+	background: var(--base-mid);
+}
+
+#sidebar .copyright {
+	bottom: 0;
+	padding: 20px;
+	width: 250px;
+	vertical-align : bottom;
+	font-size: 0.6em;
+	background: var(--base-mid);
+	text-align: center;
+}
+
+a[data-toggle="collapse"] {
+	position: relative;
+}
+
+a[aria-expanded="false"]::before, a[aria-expanded="true"]::before {
+	content: '\f107';
+	display: block;
+	position: absolute;
+	right: 20px;
+	font-family: 'FontAwesome';
+	font-size: 0.6em;
+}
+a[aria-expanded="true"]::before {
+	content: '\f106';
+}
+
+
+ul ul a {
+	font-size: 0.9em !important;
+	padding-left: 30px !important;
+	background: var(--base-light);
+}
+
+ul.CTAs {
+	padding: 20px;
+}
+
+ul.CTAs a {
+	text-align: center;
+	font-size: 0.9em !important;
+	display: block;
+	border-radius: 5px;
+	margin-bottom: 5px;
+}

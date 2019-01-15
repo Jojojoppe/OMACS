@@ -1,0 +1,73 @@
+/* ---------------------------------------------------
+	CONTENT STYLE
+----------------------------------------------------- */
+#content {
+	width: calc(100% - 250px);
+	padding: 40px;
+	min-height: 100vh;
+	transition: all 0.3s;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+#content.active {
+	width: 100%;
+}
+
+/* Cards */
+.card{
+	border-color: var(--base-dark);
+	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+.card-header{
+	color: var(--text-light);
+	background: var(--base-dark);
+	font-weight: 500;
+}
+
+/* Buttons */
+.btn{
+	border: none !important;
+	margin-right: 5px !important;
+}
+.btn:hover, .btn:active, .btn:focus, .btn:active:focus{
+	box-shadow: none !important;
+}
+.btn-primary{
+	background: var(--base-dark);
+	color: var(--text-light);
+}
+.btn-primary:hover, .btn-primary:active, .btn-primary:focus, .btn-primary:active:focus{
+	color: var(--text-light);
+	background: var(--base-light) !important;
+}
+.btn-default{
+	background: var(--background-dark);
+	color: var(--text-dark);
+}
+.btn-default:hover, .btn-default:active, .btn-default:focus, .btn-default:active:focus{
+	color: var(--text-dark);
+	background: var(--background-mid) !important;
+}
+.btn-info{
+	background: var(--base-light);
+	color: var(--text-light);
+}
+.btn-info:hover, .btn-info:active, .btn-info:focus, .btn-info:active:focus{
+	color: var(--text-light);
+	background: var(--base-superlight) !important;
+}
+.btn-warning{
+	background: var(--base-light);
+	color: var(--text-light);
+}
+.btn-warning:hover, .btn-warning:active, .btn-warning:focus, .btn-warning:active:focus{
+	color: var(--text-light);
+	background: var(--base-superlight) !important;
+}
+
+/* Forms */
+.form-control:hover, .form-control:active, .form-control:focus, .form-control:active:focus{
+	border-color: var(--base-dark) !important;
+	box-shadow: none !important;
+}
