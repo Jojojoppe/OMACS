@@ -139,7 +139,7 @@ if(!empty($_POST)){
 		}
 		echo "Tables imported successfully<br>";
 		$copyright = $_POST['copyright'];
-		mysqli_query($link,"UPDATE settings SET copyright = $copyright WHERE id = 1");
+		mysqli_query($link,"UPDATE settings SET copyright = $copyright WHERE (id = 1)");
 
 		// Write userspice config file
 		$restore = file_get_contents($config_restore);
@@ -162,6 +162,18 @@ if(!empty($_POST)){
 		$chunk2 = file_get_contents($config_chunk2);
 		file_put_contents($config_file, $chunk2, FILE_APPEND);
 		echo "Config files successfully installed<br>";
+
+
+		?>
+
+		</form>
+		<form action="install_step3.php" method="post">
+			<input type='submit' name='step3' value='To step 3'>
+			<input type="hidden" name='dbh' value='<?=$dbh?>'>
+			<input type="hidden" name='dbu' value='<?=$dbu?>'>
+			<input type="hidden" name='dbp' value='<?=$dbp?>'>
+			<input type="hidden" name='dbn' value='<?=$dbn?>'>
+		<?php
 	}
 }
 ?>

@@ -36,7 +36,7 @@ namespace CARDS{ class accordion extends card_v2{
 			?><div class="card border-secondary">
 				<div class="card-header bg-secondary" id="heading<?=$this->id?>-<?=$nr?>">
 					<h5 class="mb-0">
-						<?=$header?>
+						<?=htmlentities($header)?>
 						<button class="btn btn-secondary collapsed float-right" type="button" data-toggle="collapse" 
 						data-target="#collapse<?=$this->id?>-<?=$nr?>" aria-expanded="false" aria-controls="collapse<?=$this->id?>-<?=$nr?>">
 							<i class='fa fa-arrow-down' style='color:var(--text-light);'></i>
@@ -49,7 +49,7 @@ namespace CARDS{ class accordion extends card_v2{
 <?php
 			$text = str_replace("%0", "%", $data[$nr]);
 			$text = str_replace("%1", "\\", $text);
-			$text = $this->parseUBB(strip_tags($text));
+			$text = $this->parseUBB(htmlentities($text));
 			$text = nl2br($text);
 			echo $text;
 ?>	
@@ -66,8 +66,8 @@ namespace CARDS{ class accordion extends card_v2{
 		$headers = explode("\\", $this->content['headers']);
 		$data = explode("\\", $this->content['data']);
 
-		echo "<textarea name='0' class='d-none card_settings-".$this->id."'>".$this->content['headers']."</textarea>";
-		echo "<textarea name='1' class='d-none card_settings-".$this->id."'>".$this->content['data']."</textarea>";
+		echo "<textarea name='0' class='d-none card_settings-".$this->id."'>".htmlentities($this->content['headers'])."</textarea>";
+		echo "<textarea name='1' class='d-none card_settings-".$this->id."'>".htmlentities($this->content['data'])."</textarea>";
 
 		$nr = 0;
 		foreach($headers as $header){
@@ -75,7 +75,7 @@ namespace CARDS{ class accordion extends card_v2{
 			echo "<hr>";
 			?>
 		<div id="card_accordion_textarea_div-<?=$this->id?>-<?=$nr?>">
-		<input type="text" class="form-control card_accordion_headers-<?=$this->id?>" value="<?=$header?>" onblur="
+		<input type="text" class="form-control card_accordion_headers-<?=$this->id?>" value="<?=htmlentities($header)?>" onblur="
 				var ta_s = document.getElementsByClassName('card_settings-<?=$this->id?>');
 				var ta;
 				for(var i=0; i<ta_s.length; i++){
@@ -120,7 +120,7 @@ namespace CARDS{ class accordion extends card_v2{
 				}	
 ">Delete header</button>
 <?php
-			$this->show_rich_textarea($this->id."-".$nr, $data[$nr]);
+			$this->show_rich_textarea($this->id."-".$nr, htmlentities($data[$nr]));
 			$nr++;
 			echo "</div>";
 		}

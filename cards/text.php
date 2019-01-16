@@ -23,7 +23,7 @@ namespace CARDS{ class text extends card_v2{
 	}
 
 	function render(){
-		$text = $this->parseUBB(strip_tags($this->content['data']));
+		$text = $this->parseUBB(htmlentities($this->content['data']));
 		$text = nl2br($text);
 		echo $text;
 	}
@@ -97,7 +97,7 @@ namespace CARDS{ class text extends card_v2{
 				ta.value = ta.value.substring(0,sp)+'[size='+size+']'+ta.value.substring(sp,ep)+'[/size]'+ta.value.substring(ep);
 			">Size</button>
 
-			<textarea name="0" id="card_text_textarea-<?=$this->id?>" class="form-control card_settings-<?=$this->id?>"><?=$this->content['data']?>"</textarea>
+			<textarea name="0" id="card_text_textarea-<?=$this->id?>" class="form-control card_settings-<?=$this->id?>"><?=htmlentities($this->content['data'])?>"</textarea>
 		<?php
 	}
 
