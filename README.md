@@ -32,7 +32,7 @@ namespace CARDS{ class rawdata extends card_v2{
 	}
 
 	function render_settings(){
-		echo "<textarea name='0' class='card_settings-". $this->id ."'>". $this->content['0'] ."</textarea>";
+		echo "<textarea name='0' class='card_settings-". $this->id ."'>". $this->content['data'] ."</textarea>";
 	}
 
 }}
