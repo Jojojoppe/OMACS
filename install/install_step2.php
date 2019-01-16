@@ -103,30 +103,7 @@ if(!empty($_POST)){
 		}
 		if($success){
 			echo "Database connection <font color='green'><strong>successful</font></strong>!<br><br>";
-			?>
-			<strong>Email settings</strong><br>
-			OMACS has the possibility to mail the users their initial password and makes it possible to send a password reset in case of a forgotten password. For this the mail() function in php must be working properly.<br>
-			<input type="hidden" name="website_name" value="OMACS">
-			SMTP server: <input type="text" name="smtp_server" value="smtp.gmail.com"><br>
-			SMTP port: <input type="25" name="smtp_port" value="25"><br>
-			Email username: <input type="text" name="email_login"><br>
-			Email password: <input type="text" name="email_pass"><br>
-			From name: <input type="text" name="from_name" value="OMACS"><br>
-			From email: <input type="text" name="from_email" value=""><br>
-			Transport type: <select name="transport">
-				<option value="tls">TLS (encrypted)</option>
-				<option value="ssl">SSL (encrypted, but weak)</option>
-			</select><br>
-			<input type="hidden" name="debug_level" value="0">
-			<input type="hidden" name="isSMTP" value="1">
-			Use SMTP authentication: <select name="useSMTPauth">
-				<option value="false">No</option>
-				<option value="true">Yes</option>
-			</select><br>
-			<input type="hidden" name="isHTML" value="true">
-			<input type="hidden" name="email_act" value="1"</input>
-			Root of install of OMACS: <input type="text" name="root"><br>
-			<input class="btn btn-danger" type="submit" name="submit" value="Install OMACS"><?php
+			?><input class="btn btn-danger" type="submit" name="submit" value="Install OMACS"><?php
 		}
 	}
 
@@ -186,24 +163,17 @@ if(!empty($_POST)){
 		file_put_contents($config_file, $chunk2, FILE_APPEND);
 		echo "Config files successfully installed<br>";
 
-		// Update mail configuration
-		mysqli_query($link, "UPDATE email SET website_name = '".$_POST['website_name']."' WHERE (id = 1)"); 
-		mysqli_query($link, "UPDATE email SET smtp_server = '".$_POST['smtp_server']."' WHERE (id = 1)");
-		mysqli_query($link, "UPDATE email SET smtp_port = '".$_POST['smtp_port']."' WHERE (id = 1)");
-		mysqli_query($link, "UPDATE email SET email_login = '".$_POST['email_login']."' WHERE (id = 1)");
-		mysqli_query($link, "UPDATE email SET email_pass = '".$_POST['email_pass']."' WHERE (id = 1)");
-		mysqli_query($link, "UPDATE email SET from_name = '".$_POST['from_name']."' WHERE (id = 1)");
-		mysqli_query($link, "UPDATE email SET from_email = '".$_POST['from_email']."' WHERE (id = 1)");
-		mysqli_query($link, "UPDATE email SET transport = '".$_POST['transport']."' WHERE (id = 1)");
-		mysqli_query($link, "UPDATE email SET verify_url = '".$_POST['root']."' WHERE (id = 1)");
-		mysqli_query($link, "UPDATE email SET debug_level = '".$_POST['debug_level']."' WHERE (id = 1)");
-		mysqli_query($link, "UPDATE email SET isSMTP = '".$_POST['isSMTP']."' WHERE (id = 1)");
-		mysqli_query($link, "UPDATE email SET isHTML = '".$_POST['isHTML']."' WHERE (id = 1)");
-		mysqli_query($link, "UPDATE email SET useSMTPauth = '".$_POST['useSMTPauth']."' WHERE (id = 1)");
-		mysqli_query($link, "UPDATE email SET email_act = '".$_POST['email_act']."' WHERE (id = 1)");
-		echo "Email settings succesfully updated. These can always be altered on the UserSpice dashboard.<br>";
-		echo "<a href='../index.php'>To homepage</a>";
 
+		?>
+
+		</form>
+		<form action="install_step3.php" method="post">
+			<input type='submit' name='step3' value='To step 3'>
+			<input type="hidden" name='dbh' value='<?=$dbh?>'>
+			<input type="hidden" name='dbu' value='<?=$dbu?>'>
+			<input type="hidden" name='dbp' value='<?=$dbp?>'>
+			<input type="hidden" name='dbn' value='<?=$dbn?>'>
+		<?php
 	}
 }
 ?>
